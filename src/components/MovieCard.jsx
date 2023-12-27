@@ -1,9 +1,16 @@
 import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-const MovieCard = ({ title, vote_average, overview, poster_path }) => {
+
+const MovieCard = ({ title, vote_average, overview, poster_path,id }) => {
+
+
+const navigate = useNavigate()
+
   return (
     <>
-      <div  >
+      <div onClick={()=>navigate(`/${id}`)} >
+
         <a href="#" className="h-[400px] group relative block bg-black">
           <img
             alt="Developer"
