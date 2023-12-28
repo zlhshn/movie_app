@@ -6,11 +6,12 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import MovieDetail from "../pages/MovieDetail";
 import PrivateRouter from "./PrivateRouter";
+import AuthProvider from "../context/AuthProvider";
 
 const AppRouter = () => {
-  
+
   return (
-    <>
+    <AuthProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
@@ -21,7 +22,7 @@ const AppRouter = () => {
           <Route path="" element={<MovieDetail />} />
         </Route>
       </Routes>
-    </>
+    </AuthProvider>
   );
 };
 

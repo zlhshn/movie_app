@@ -1,89 +1,94 @@
-import React from "react";
-
+import React, { useContext, useState } from "react";
+import GoogleIcon from "../assets/icons/GoogleIcon";
+import { AuthContext } from "../context/AuthProvider";
 
 const Register = () => {
+
+  const [userInfo, setUserInfo] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+const {createUser} = useContext(AuthContext)
+
+const handleSubmit= (e)=>{
+  e.preventDefault()
+  const {email,password} = userInfo
+  createUser(email,password)
+
+}
+
+  const handleChange =(e)=>{
+    setUserInfo({...userInfo, [e.target.name] : e.target.value})
+  }
+
   return (
-    <div>
-      <section className="relative flex flex-wrap lg:h-screen lg:items-center">
-        <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
-          <img
-            alt="Welcome"
-            src="https://images.unsplash.com/photo-1630450202872-e0829c9d6172?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        </div>
-        <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24 ">
-          <form
-            action=""
-            className="mx-auto mb-0 mt-8 max-w-md space-y-4 border border-black p-[2rem]"
-          >
-            <div className="mx-auto max-w-lg text-center">
-              <h1 className="text-2xl font-bold sm:text-3xl">SİGN İN</h1>
+    <div className="flex justify-center">
+      <div className="overflow-hidden flex-1 h-screen justify-center items-center dark:bg-gray-dark-main">
+        <div className={`form-container mt-[5vh] w-[380px] h-[580px] `}>
+          <form onSubmit={handleSubmit}>
+            <h2 className="text-red-main text-2xl font-[500] text-center tracking-[0.1em] mb-3">
+              Sign Up
+            </h2>
+            <div className="relative z-0 w-full mb-6 group">
+              <input
+                name="firstName"
+                className="peer"
+                type="text"
+                required
+                placeholder=" "
+                onChange={handleChange}
+              />
+              <label htmlFor="floating_text">First Name</label>
             </div>
-            <div>
-              <label htmlFor="text" className="">
-                First Name
-              </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  className="w-full outline-none   p-4 text-sm  "
-                />
-              </div>
-            </div>{" "}
-            <div>
-              <label htmlFor="text" className="">
-                Last Name
-              </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  className="w-full outline-none   p-4 text-sm  "
-                />
-              </div>
+            <div className="relative z-0 w-full mb-6 group">
+              <input
+                name="lastName"
+                className="peer"
+                type="text"
+                required
+                placeholder=" "
+                onChange={handleChange}
+              />
+              <label htmlFor="floating_text">Last Name</label>
             </div>
-            <div>
-              <label htmlFor="email" className="">
-                Email
-              </label>
-              <div className="relative">
-                <input
-                  type="email"
-                  className="w-full outline-none   p-4 text-sm  "
-                />
-              </div>
+            <div className="relative z-0 w-full mb-6 group">
+              <input
+                name="email"
+                className="peer"
+                type="email"
+                placeholder=" "
+                required
+                onChange={handleChange}
+              />
+              <label htmlFor="floating_email">Email</label>
             </div>
-            <div>
-              <label htmlFor="password" className="">
-                Password
-              </label>
-              <div className="relative">
-                <input
-                  type="password"
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm input"
-                />
-              </div>
+            <div className="relative z-0 w-full mb-6 group">
+              <input
+                name="password"
+                className="peer"
+                type="password"
+                placeholder=" "
+                required
+                onChange={handleChange}
+              />
+              <label htmlFor="floating_password">Password</label>
             </div>
-        
-            <div>
-              <button
-                type="submit"
-                className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
-              >
-                Register
-              </button>
-            </div>
-            <div>
-              <button
-                type="button"
-                className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
-              >
-                Continue with Google
-              </button>
-            </div>
+            <button className="btn-danger" type="submit">
+              Register
+            </button>
+            <button
+              className="flex justify-between text-center items-center btn-danger"
+              type="button"
+            >
+              Continue with Google
+              <GoogleIcon color="currentColor" />
+            </button>
           </form>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

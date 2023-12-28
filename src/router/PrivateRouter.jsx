@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-
+import { AuthContext } from "../context/AuthProvider";
+import { useContext } from "react";
 const PrivateRouter = () => {
-  const [user, setUser] = useState(true);
+ const {user} = useContext(AuthContext)
 
   return (
     user ? (
