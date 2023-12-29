@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthProvider";
 const IMG_API = "https://image.tmdb.org/t/p/w1280";
 const defaultImage =
   "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
-const MovieCard = ({ title, vote_average, overview, poster_path,id }) => {
+const MovieCard = ({ title, vote_average, overview, poster_path,id,original_title }) => {
 
  const { currentUser } = useContext(AuthContext);
 const navigate = useNavigate()
@@ -22,7 +22,7 @@ const getVoteClass = (vote) => {
 
   return (
     <>
-      <div onClick={()=>navigate(`/${id}`)} >
+      <div onClick={()=>navigate(`/${id}`)}  className="movie">
 
       <img
         loading="lazy"
@@ -30,10 +30,11 @@ const getVoteClass = (vote) => {
         alt="movie-card"
       />
       <div className="flex align-baseline justify-between p-1 text-white">
-        <h5>{title}</h5>
+        <h5>{title}
+ </h5>
         {currentUser && (
-          <span>
-            {vote_average}
+          <span className={`tag ${getVoteClass(vote_average)}`}>
+            {vote_average.toFixed(1)}
           </span>
         )}
       </div>

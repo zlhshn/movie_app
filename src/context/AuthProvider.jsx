@@ -12,6 +12,7 @@ import {
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../auth/firebase";
 import { useNavigate } from "react-router-dom";
+import { toastError, toastSuccess } from "../helper/ToastNotify";
 
 export const AuthContext = createContext();
 
@@ -38,9 +39,10 @@ const AuthProvider = ({ children }) => {
       });
       // console.log(userCredential);
       navigate("/");
-
+  toastSuccess("Registered Successfull!")
     } catch (error) {
       console.log(error);
+      toastError(error.message)
   
     }
   };
@@ -48,8 +50,9 @@ const AuthProvider = ({ children }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/");
+      toastSuccess("Logged in Successfull!")
     } catch (error) {
-      console.log(error);
+      toastError(error.message)
     }
   };
 
@@ -70,7 +73,7 @@ const userObserver = ()=>{
 
 const logOut = ()=>{
 signOut(auth)
-
+toastSuccess("Logged out successfully");
 }
 
 const signUpProvider = () => {
@@ -80,7 +83,7 @@ const signUpProvider = () => {
     .then((result) => {
   
       navigate("/");
-    
+      toastSuccess("Logged in successfull");
     })
     .catch((error) => {
  
@@ -91,10 +94,10 @@ const signUpProvider = () => {
 const forgotPassword = (email) =>{
 
   sendPasswordResetEmail(auth,email).then(()=>{
-alert("check your email")
+    toastSuccess("Please check your email");
 
   }).catch((error)=>{
-   
+    toastError(error.message);
   })
 }
 

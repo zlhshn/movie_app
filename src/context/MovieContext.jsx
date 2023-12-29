@@ -8,19 +8,16 @@ export const useMovieContext = () => {
   return useContext(MovieContext);
 };
 
-const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
-const FEATURED_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
 
 
 const MovieContextProvider = ({ children }) => {
 
  const [movies,setMovies]   =useState([])
  const [loading,setLoading] =useState(false)
+ const [search, setSearch] = useState("");
 
- useEffect(() => {
-  getMovies(FEATURED_URL)
 
- }, [])
+
  
 
 
@@ -30,6 +27,7 @@ setLoading(true)
     try {
         const { data } = await axios(url);
     setMovies(data.results);
+    console.log(data.results);
     } catch (error) {
         console.log(error);
     } finally{
@@ -40,7 +38,7 @@ setLoading(true)
 
 
 
-  return <MovieContext.Provider value={{movies,loading,getMovies}}>{children}</MovieContext.Provider>;
+  return <MovieContext.Provider value={{movies,loading,getMovies,search,setSearch}}>{children}</MovieContext.Provider>;
 };
 
 export default MovieContextProvider;
