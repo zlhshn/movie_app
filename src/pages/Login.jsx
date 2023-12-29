@@ -14,7 +14,7 @@ signIn(email, password);
 
 }
 
-const {signIn} = useContext(AuthContext)
+const {signIn ,signUpProvider ,forgotPassword} = useContext(AuthContext)
 
 const handleChange= (e)=>{
   setUserInfo({...userInfo, [e.target.name] : e.target.value})
@@ -51,7 +51,7 @@ const handleChange= (e)=>{
               <label htmlFor="floating_password">Password</label>
             </div>
             <div className="flex justify-between">
-              <span className="py-3 font-[0.75em] cursor-pointer decoration-none text-gray-500 hover:text-[#ff4b45]">
+              <span onClick={()=>forgotPassword(userInfo.email)} className="py-3 font-[0.75em] cursor-pointer decoration-none text-gray-500 hover:text-[#ff4b45]">
                 Forgot Password
               </span>
               <Link
@@ -67,6 +67,7 @@ const handleChange= (e)=>{
             <button
               className="flex justify-between text-center items-center btn-danger"
               type="button"
+              onClick={signUpProvider}
             >
               Continue with Google
               <GoogleIcon color="currentColor" />

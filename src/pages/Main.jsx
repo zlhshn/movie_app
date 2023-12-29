@@ -1,49 +1,57 @@
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+
+import React, { useContext, useState } from "react";
 import MovieCard from "../components/MovieCard";
-import İnputSearch from "../components/İnputSearch";
+
 import { AuthContext } from "../context/AuthProvider";
+import { useMovieContext } from "../context/MovieContext";
 
 const Main = () => {
-  const [movie, setMovie] = useState([]);
+  const { movies, loading ,getMovies} = useMovieContext();
+  const { currentUser } = useContext(AuthContext);
   const [search, setSearch] = useState("");
-  const {user,setUser} =useContext(AuthContext)
+
+
+
 
   const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
-  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
+ const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${search}`
 
-  const getMovies = async () => {
-    const { data } = await axios(url);
-    setMovie(data.results);
-  };
-
-  const getSearch = async () => {
-    try {
-      const res = await axios(URL);
-      setMovie(res.data.results);
-      setSearch("")
-    } catch (error) {
-      console.log(error);
+  const handleSubmit= (e) => {
+    e.preventDefault();
+  
+      
+  if (search && currentUser) {
+      getMovies(SEARCH_API);
     }
-  };
-
-  useEffect(() => {
-    getMovies();
-  }, [user]);
-
-  const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${search}`;
+  
+  
+  }
 
   return (
-    <div className="mx-auto  px-4 py-16 sm:px-6 sm:py-24  lg:px-8 bg-cover">
-      <İnputSearch
-        search={search}
-        setSearch={setSearch}
-        getSearch={getSearch}
-      />
-      <div className="mt-6 grid grid-cols-2 md:grid-cols-5 gap-x-6 gap-y-10 xl:gap-x-8">
-        {movie.map((item) => (
-          <MovieCard key={item.id} {...item} />
-        ))}
+    <div>
+      <form className="flex justify-center p-2" onSubmit={handleSubmit}>
+        <input
+          type="search"
+          className="w-80 h-8 rounded-md p-1 m-2"
+          placeholder="Search a movie..."
+          onChange={(e) => setSearch(e.target.value)}
+         
+        />
+        <button className="btn-danger-bordered" type="submit">
+          Search
+        </button>
+      </form>
+      <div className="flex flex-wrap justify-center">
+        {loading ? (
+          <div
+            className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-600 mt-52"
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        ) : (
+          movies.map((movie) => <MovieCard key={movie.id} {...movie} />)
+        )}
       </div>
     </div>
   );

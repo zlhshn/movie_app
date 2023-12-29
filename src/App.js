@@ -1,11 +1,16 @@
-import AppRouter from './router/AppRouter';
-import { BrowserRouter} from 'react-router-dom'
+import { ToastContainer } from "react-toastify";
+import AppRouter from "./router/AppRouter";
+import MovieContextProvider from "./context/MovieContext";
+import AuthProvider from "./context/AuthProvider";
 
 function App() {
   return (
-    <BrowserRouter>
-      <AppRouter />
-    </BrowserRouter>
+    <AuthProvider>
+      <MovieContextProvider>
+        <AppRouter />
+        <ToastContainer />
+      </MovieContextProvider>
+    </AuthProvider>
   );
 }
 

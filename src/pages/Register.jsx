@@ -11,19 +11,22 @@ const Register = () => {
     password: "",
   });
 
-const {createUser} = useContext(AuthContext)
+const {createUser ,signUpProvider} = useContext(AuthContext)
 
-const handleSubmit= (e)=>{
-  e.preventDefault()
-  const {email,password} = userInfo
-  createUser(email,password)
 
-}
-
-  const handleChange =(e)=>{
+ const handleChange =(e)=>{
     setUserInfo({...userInfo, [e.target.name] : e.target.value})
   }
 
+const handleSubmit= (e)=>{
+  e.preventDefault()
+  const {email,password ,firstName,lastName} = userInfo
+  const displayName = `${firstName} ${lastName}`
+  createUser(email,password ,displayName)
+
+}
+
+ 
   return (
     <div className="flex justify-center">
       <div className="overflow-hidden flex-1 h-screen justify-center items-center dark:bg-gray-dark-main">
@@ -82,6 +85,7 @@ const handleSubmit= (e)=>{
             <button
               className="flex justify-between text-center items-center btn-danger"
               type="button"
+              onClick={signUpProvider}
             >
               Continue with Google
               <GoogleIcon color="currentColor" />

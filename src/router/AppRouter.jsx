@@ -18,8 +18,8 @@ const AppRouter = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="/:id" element={<PrivateRouter />}>
-          <Route path="" element={<MovieDetail />} />
+        <Route path="" element={<PrivateRouter />}>
+          <Route path="/:id" element={<MovieDetail />} />
         </Route>
       </Routes>
     </AuthProvider>

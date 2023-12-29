@@ -4,15 +4,15 @@ import { Navigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import { useContext } from "react";
 const PrivateRouter = () => {
- const {user} = useContext(AuthContext)
+ const {currentUser} = useContext(AuthContext)
 
   return (
-    user ? (
+    currentUser ? (
     <>
       <Outlet />
     </>
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/login" replace/>
   )
   ) 
 };
