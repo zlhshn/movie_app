@@ -10,7 +10,7 @@ Users can register and log in via email or Google.
 
 
 ## How does my project look 
-![movie]()
+![movie](./moviee.gif)
 
 
 ## Technologies 
