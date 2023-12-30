@@ -4,7 +4,7 @@
 My motivation in this project was to perform authentication using firebase.
 Users can register and log in via email or Google.
 
-##  Live Link 
+##  Link 
 [LİVE](https://movie-app-zlh.vercel.app/)
 
 
@@ -26,7 +26,8 @@ Users can register and log in via email or Google.
 🎬 Tailwind CSS <br>
 
 ## How to use?
-📽 Users cannot search or access the details of the movies without registering or logging in.
-
+📽 Users cannot search or access the details of the movies without registering or logging in.<br>
+📽 Registration or Login can be done via email or Google. <br>
+📽 You can go to the detail page by clicking on the movie.
 ## API Reference
 The Movie Database (TMDB()https://www.themoviedb.org/)
