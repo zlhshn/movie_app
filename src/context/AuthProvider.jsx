@@ -82,7 +82,7 @@ const signUpProvider = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
   
-      navigate("/");
+      navigate("/login");
       toastSuccess("Logged in successfull");
     })
     .catch((error) => {

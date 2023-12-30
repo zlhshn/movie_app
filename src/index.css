@@ -13,10 +13,13 @@
   }
 
   body {
-    @apply dark:bg-slate-900;
+    @apply bg-[#bdbdbda2] dark:bg-[#0d272e];
     font-family: "Poppins", "sans-serif";
     margin: 0;
-  }
+   
+}
+
+
 }
 
 @layer components {
@@ -39,12 +42,25 @@
 }
 
 
+/* .login{
+  background-image: url("./assets/icons/back.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
 
+.active{
+ 
+  background-color: rgba(104, 97, 97, 0.582);
+  border-radius: 10px;
+  color: #f31313c9;
+  font-weight: 700;
+
+}
 /* MovieCard Custom CSS */
 .movie {
-  background-color: #080f36;
+  background-color: #c25b17;
   border-radius: 3px;
-  box-shadow: 4px 4px 5px rgba(63, 60, 60, 0.5);
+  box-shadow: 4px 4px 5px rgba(80, 76, 76, 0.5);
   overflow: hidden;
   margin: 1rem;
   width: 300px;
@@ -61,9 +77,10 @@
 
 .movie-over {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(97, 114, 151, 0.733);
   color: #000;
   bottom: 0;
+  
   left: 0;
   right: 0;
   overflow: auto;
@@ -93,7 +110,7 @@
 }
 
 .tag.orange {
-  background-color: #f57f17;
+  background-color: #d8c412;
 }
 
 .tag.red {

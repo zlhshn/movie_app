@@ -21,7 +21,7 @@ const TvCard =({ vote_average, overview, poster_path,id,name }) => {
    
      return (
        <>
-         <div onClick={()=>navigate(`/${id}`)}  className="movie">
+         <div onClick={()=>navigate(`/detail/${id}`)}  className="movie">
    
          <img
            loading="lazy"
