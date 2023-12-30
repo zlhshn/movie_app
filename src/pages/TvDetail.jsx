@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import ReactPlayer from 'react-player';
 

@@ -1,8 +1,6 @@
 
-import React, { useContext, useState,useEffect } from "react";
+import React, { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
-
-import { AuthContext } from "../context/AuthProvider";
 import { useMovieContext } from "../context/MovieContext";
 import Search from "../components/Search";
 

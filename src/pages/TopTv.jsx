@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+
 import { useMovieContext } from '../context/MovieContext';
 import { useEffect } from 'react';
-import MovieCard from '../components/MovieCard';
 import Search from '../components/Search';
 import TvCard from '../components/TvCard';
 

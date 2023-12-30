@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import { useMovieContext } from '../context/MovieContext';
 import MovieCard from '../components/MovieCard';
 import TvCard from '../components/TvCard';  // Import TvCard component
