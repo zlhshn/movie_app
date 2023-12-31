@@ -39,7 +39,7 @@ const MovieDetail = () => {
 
   return (
     <>
-      <div className="">
+      <div className="video">
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${video.key}`}
           className="react-player w-50 m-auto mt-10"
@@ -58,7 +58,7 @@ const MovieDetail = () => {
             <span>{detail.release_date}</span>
           </time>
         </div>
-        <div className="hidden sm:block sm:basis-56">
+        <div className=" min-w-[50px]: sm:block ">
           <img
             alt="Guitar"
             src={`https://image.tmdb.org/t/p/w1280${detail.poster_path}`}
