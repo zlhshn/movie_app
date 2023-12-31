@@ -64,8 +64,13 @@ const userObserver = ()=>{
    const {email,displayName,photoURL}
  = user
  setCurrentUser({email,displayName,photoURL})
+ sessionStorage.setItem(
+  "user",
+  JSON.stringify({ email, displayName, photoURL })
+);
     } else {
       setCurrentUser(false);
+      sessionStorage.removeItem("user");
     }
   });
 

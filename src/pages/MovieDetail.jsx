@@ -58,7 +58,7 @@ const MovieDetail = () => {
             <span>{detail.release_date}</span>
           </time>
         </div>
-        <div className=" min-w-[150px]: sm:block ">
+        <div className="min-w-[150px]: sm:block  sm:basis-56">
           <img
             alt="Guitar"
             src={`https://image.tmdb.org/t/p/w1280${detail.poster_path}`}

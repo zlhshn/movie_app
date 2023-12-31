@@ -61,7 +61,7 @@ const navigate = useNavigate()
 }</span>
           </time>
         </div>
-        <div className="hidden sm:block sm:basis-56">
+        <div className=" min-w-[150px]: sm:block  sm:basis-56">
           <img
             alt="Guitar"
             src={`https://image.tmdb.org/t/p/w1280${detail?.poster_path}`}
