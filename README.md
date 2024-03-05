@@ -30,4 +30,4 @@ Users can register and log in via email or Google.
 📽 Registration or Login can be done via email or Google. <br>
 📽 You can go to the detail page by clicking on the movie.
 ## API Reference
-The Movie Database (TMDB()https://www.themoviedb.org/)
+The Movie Database - TMDB (https://www.themoviedb.org/)
